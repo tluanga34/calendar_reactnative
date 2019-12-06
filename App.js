@@ -69,10 +69,14 @@ const App: () => React$Node = () => {
               <View style={styles.weekGrid}>
                 {weekDaysData.map((weekDayItem, index) => {
                   return (
-                    <View key={index} style={styles.weekCell}>
+                    <View key={index} style={[styles.weekCell, {position: "relative"}]}>
                       <View style={[{borderRadius: 100, width: 35,  height: 35, alignItems: "center", justifyContent: "center", display: "flex"}, (weekDayItem.today)? {backgroundColor: "#ecedf1"} : {}]}>
                         <Text style={[styles.cellText, { fontSize: 15 }, (weekDayItem.otherMonth) ? styles.cellTextGrey : styles.cellTextBlack]}>{weekDayItem.label}</Text>
                       </View>
+
+                      {(weekDayItem.haveAppointment)? <View style={{width: 5, height: 5, backgroundColor: "#d51236", position: "absolute", top: 3, right: 3, borderRadius: 50}}></View>:null}
+                      
+                      
                     </View>
                   )
                 })}
